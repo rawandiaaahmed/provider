@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home/model/model_cart.dart';
+import 'package:flutter_application_1/home/ui/widgets/checkout.dart';
 import 'package:flutter_application_1/home/ui/widgets/items.dart';
 import 'package:provider/provider.dart';
 
@@ -22,12 +23,17 @@ class ExampleProvider extends StatelessWidget {
         actions: [
           Row(
             children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
+              IconButton(onPressed: () {
+                 Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Checkout()),
+  );
+              }, icon: Icon(Icons.add_shopping_cart)),
               Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Consumer<ModelCart>(
                   builder: (context, ModelCart, child) {
-                    return Text(" ${ModelCart.count} items");
+                    return Text(" ${ModelCart.price} items");
                   },
                 ),
               ),

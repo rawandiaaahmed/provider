@@ -18,5 +18,13 @@ class ModelCart with ChangeNotifier{
   double get price {
     return _price;
   }
+  List<Items> get Pasketitems {
+    return _items;
+  }
+  void remove(Items item) {
+    _items.remove(item);
+    _price -= item.price;
+    notifyListeners();
+  }
 
 }
